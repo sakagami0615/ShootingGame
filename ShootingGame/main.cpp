@@ -1,5 +1,8 @@
 #include "DxLibWrapper.h"
 
+#include "Interface.h"
+#include "Keyinput.h"
+
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -9,13 +12,26 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	DxLibWrapper dxlib(dxlib_param);
 
+	shared_ptr<KeyInput> key_input(new KeyInput());
+
+	list<shared_ptr<RunnerInterface>> runner;
+	runner.push_back(key_input);
 
 	while(dxlib.ProcessWindowMessage() && !dxlib.ForcedTermination()){
 
-		int x = static_cast<int>(dxlib_param.window_size.x/2.0);
-		int y = static_cast<int>(dxlib_param.window_size.y/2.0);
-		int r = 10;
-		DrawCircle(x, y, r, GetColor(255, 255, 255));
+		if(key_input->GetKeyDownEdge(KEY_INPUT_Z)){
+			int x = static_cast<int>(dxlib_param.window_size.x/2.0);
+			int y = static_cast<int>(dxlib_param.window_size.y/2.0);
+			int r = 10;
+			DrawCircle(x, y, r, GetColor(255, 255, 255));
+		}
+
+		for(auto &it : runner){
+			it->Run();
+		}
+		for(auto &it : runner){
+			it->Draw();
+		}
 	}
 
 	return 0;
