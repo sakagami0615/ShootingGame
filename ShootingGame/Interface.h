@@ -51,9 +51,9 @@ public:
 class ShootInterface{
 public:
 	virtual ~ShootInterface(){}
+	virtual list<shared_ptr<BarrageProductInterface>> GetBarrageProducts() = 0;
 	virtual Point GetPosition() = 0;
 	virtual bool GetIsShoot() = 0;
-	virtual list<shared_ptr<BarrageProductInterface>> GetBarrageProducts() = 0;
 };
 
 class AttackInterface{
