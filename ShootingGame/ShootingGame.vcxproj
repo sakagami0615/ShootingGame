@@ -151,15 +151,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DxLibWrapperParameter.cpp" />
+    <ClCompile Include="Common.cpp" />
+    <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="DxLibWrapper.cpp" />
     <ClCompile Include="KeyInput.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
+    <ClInclude Include="Controller.h" />
     <ClInclude Include="DxLibWrapper.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Keyinput.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

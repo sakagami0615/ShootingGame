@@ -16,6 +16,17 @@ public:
 	Point(double x, double y);
 };
 
+class Rect{
+public:
+	double x;
+	double y;
+	double w;
+	double h;
+
+	Rect();
+	Rect(double x, double y, double w, double h);
+};
+
 
 class DxLibWrapperParameter{
 public:

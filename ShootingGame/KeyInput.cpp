@@ -15,7 +15,7 @@ bool KeyInput::GetKeyUp(const int key_code)
 {
 	int sat_key_code = common::Saturation(key_code, 0, KEY_BUF_SIZE);
 
-	if(_key_states_count[sat_key_code] > 0){
+	if(_key_states_count[sat_key_code] <= 0){
 		return true;
 	}
 	return false;
@@ -25,7 +25,7 @@ bool KeyInput::GetKeyDown(const int key_code)
 {
 	int sat_key_code = common::Saturation(key_code, 0, KEY_BUF_SIZE);
 
-	if(_key_states_count[sat_key_code] <= 0){
+	if(_key_states_count[sat_key_code] > 0){
 		return true;
 	}
 	return false;

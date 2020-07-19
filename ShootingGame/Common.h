@@ -1,24 +1,21 @@
 #pragma once
 
-#include <algorithm>
-using namespace std;
+#include "DxLibWrapper.h"
 
 
 namespace common
 {
-	int Saturation(const int src, const int low, const int high)
-	{
-		int dst = src;
-		dst = max(dst, low);
-		dst = min(dst, high);
-		return dst;
-	}
+	// ‰æ–Ê‰E‰ºŒ´“_À•WŒn‚©‚ç‰æ–Ê¶ãŒ´“_À•WŒn‚É•ÏŠ·
+	class CoordinateTransform{
+	private:
+		const Rect _game_area;
+	public:
+		CoordinateTransform(const Rect game_area);
+		~CoordinateTransform();
+		Point Translation(Point position);
+	};
 
-	double Saturation(const double src, const double low, const double high)
-	{
-		double dst = src;
-		dst = max(dst, low);
-		dst = min(dst, high);
-		return dst;
-	}
+	// –O˜a‰‰ZŠÖ”
+	int Saturation(const int src, const int low, const int high);
+	double Saturation(const double src, const double low, const double high);
 }
